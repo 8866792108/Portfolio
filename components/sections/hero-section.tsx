@@ -21,10 +21,16 @@ const roles = [
 
 export function HeroSection() {
   const containerRef = useRef<HTMLElement>(null)
+
+  // For parallax on hero content
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start'],
   })
+
+  // For scroll indicator — tracks window scroll so it hides immediately on any scroll
+  const { scrollY } = useScroll()
+  const scrollIndicatorOpacity = useTransform(scrollY, [0, 80], [1, 0])
 
   const y = useTransform(scrollYProgress, [0, 1], [0, 200])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
@@ -165,7 +171,7 @@ export function HeroSection() {
 
       {/* Scroll indicator — fades out as soon as user starts scrolling */}
       <motion.div
-        style={{ opacity: useTransform(scrollYProgress, [0, 0.04], [1, 0]) }}
+        style={{ opacity: scrollIndicatorOpacity }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
         <motion.button
