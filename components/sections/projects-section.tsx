@@ -245,39 +245,80 @@ export function ProjectsSection() {
                 onWheel={(e) => e.stopPropagation()}
                 onTouchMove={(e) => e.stopPropagation()}
               >
-                {/* Header image */}
-                <div className="relative h-56 md:h-72 bg-gradient-to-br from-zinc-800 via-zinc-900 to-black overflow-hidden">
-                  {/* Animated gradient background */}
-                  <div className="absolute inset-0">
-                    <div className="absolute top-1/2 left-1/4 w-64 h-64 rounded-full bg-blue-500/20 blur-[80px] animate-pulse" />
-                    <div className="absolute top-1/3 right-1/4 w-48 h-48 rounded-full bg-cyan-500/20 blur-[60px] animate-pulse" style={{ animationDelay: '1s' }} />
-                    <div className="absolute bottom-1/4 left-1/2 w-56 h-56 rounded-full bg-violet-500/15 blur-[70px] animate-pulse" style={{ animationDelay: '2s' }} />
-                  </div>
-                  
-                  {/* Grid pattern overlay */}
-                  <div className="absolute inset-0 opacity-20" style={{
-                    backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
-                    backgroundSize: '40px 40px'
-                  }} />
-                  
-                  {/* Bottom gradient */}
-                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-zinc-900/95 to-transparent" />
-                  
-                  {/* Project icon */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative">
-                      <div className="absolute inset-0 w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-500/30 to-cyan-500/30 blur-xl" />
-                      <div className="relative w-20 h-20 rounded-2xl bg-zinc-800/80 border border-zinc-700/50 flex items-center justify-center backdrop-blur-sm">
-                        <Sparkles className="w-10 h-10 text-blue-400" />
+                {/* Live Preview */}
+                <div className="relative bg-zinc-950 border-b border-zinc-800">
+                  {/* Browser chrome bar */}
+                  <div className="flex items-center gap-2 px-4 py-2.5 bg-zinc-900 border-b border-zinc-800">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-red-500/70" />
+                      <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                      <div className="w-3 h-3 rounded-full bg-emerald-500/70" />
+                    </div>
+                    <div className="flex-1 mx-3">
+                      <div className="flex items-center gap-2 px-3 py-1 bg-zinc-800 rounded-md text-xs text-zinc-400 font-mono truncate">
+                        <Monitor size={11} className="shrink-0 text-zinc-500" />
+                        {selectedProject.link !== '#' ? selectedProject.link : 'No live preview available'}
                       </div>
                     </div>
+                    {selectedProject.link !== '#' && (
+                      <button
+                        onClick={() => { setIframeLoaded(false); setIframeKey(k => k + 1) }}
+                        className="p-1.5 rounded-md hover:bg-zinc-700 text-zinc-500 hover:text-zinc-300 transition-colors"
+                        title="Reload preview"
+                      >
+                        <RefreshCw size={13} />
+                      </button>
+                    )}
                   </div>
 
-                  {/* Category badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 text-xs font-medium text-blue-400 bg-blue-500/10 rounded-full border border-blue-500/20 backdrop-blur-sm">
-                      {selectedProject.category}
-                    </span>
+                  {/* iframe area */}
+                  <div className="relative h-56 md:h-72 overflow-hidden">
+                    {selectedProject.link !== '#' ? (
+                      <>
+                        {/* Loading skeleton */}
+                        {!iframeLoaded && (
+                          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-zinc-950 z-10">
+                            <div className="w-8 h-8 border-2 border-zinc-700 border-t-blue-400 rounded-full animate-spin" />
+                            <span className="text-xs text-zinc-500 font-mono">Loading preview...</span>
+                          </div>
+                        )}
+                        <iframe
+                          key={iframeKey}
+                          src={selectedProject.link}
+                          title={`${selectedProject.title} preview`}
+                          className="w-full h-full border-0"
+                          style={{
+                            transform: 'scale(0.75)',
+                            transformOrigin: 'top left',
+                            width: '133.33%',
+                            height: '133.33%',
+                            pointerEvents: 'none',
+                          }}
+                          onLoad={() => setIframeLoaded(true)}
+                          sandbox="allow-scripts allow-same-origin"
+                        />
+                        {/* Overlay to prevent iframe interaction, allow modal scroll */}
+                        <div className="absolute inset-0 z-[5]" />
+                      </>
+                    ) : (
+                      /* Fallback for no-link projects */
+                      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-zinc-950">
+                        <div className="relative">
+                          <div className="absolute inset-0 w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 blur-xl" />
+                          <div className="relative w-16 h-16 rounded-2xl bg-zinc-800 border border-zinc-700/50 flex items-center justify-center">
+                            <Sparkles className="w-8 h-8 text-blue-400" />
+                          </div>
+                        </div>
+                        <span className="text-xs text-zinc-600 font-mono">Preview not available</span>
+                      </div>
+                    )}
+
+                    {/* Category badge */}
+                    <div className="absolute top-3 left-3 z-20">
+                      <span className="px-2.5 py-1 text-xs font-medium text-blue-400 bg-blue-500/10 rounded-full border border-blue-500/20 backdrop-blur-sm">
+                        {selectedProject.category}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
