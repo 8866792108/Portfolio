@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { ExternalLink, Github, X, ChevronRight, Sparkles } from 'lucide-react'
+import { ExternalLink, Github, X, ChevronRight, Sparkles, Monitor, RefreshCw } from 'lucide-react'
 import { useSmoothScroll } from '@/components/providers/smooth-scroll-provider'
 
 const projects = [
@@ -69,6 +69,8 @@ export function ProjectsSection() {
   const ref = useRef<HTMLElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
+  const [iframeKey, setIframeKey] = useState(0)
+  const [iframeLoaded, setIframeLoaded] = useState(false)
   const { stop, start } = useSmoothScroll()
 
   // Stop/start Lenis when modal opens/closes
@@ -76,6 +78,8 @@ export function ProjectsSection() {
     if (selectedProject) {
       stop()
       document.body.style.overflow = 'hidden'
+      setIframeLoaded(false)
+      setIframeKey(k => k + 1)
     } else {
       start()
       document.body.style.overflow = ''
