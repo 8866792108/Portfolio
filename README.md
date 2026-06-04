@@ -6,7 +6,7 @@
 
 ## 🚀 Live Demo
 
-**[sanjaykz-portfolio.vercel.app](https://sanjaykz-portfolio.vercel.app)**
+**[sanjaykz-portfolio.netlify.app](https://sanjaykz-portfolio.netlify.app)**
 
 ---
 
