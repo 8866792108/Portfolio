@@ -5,9 +5,9 @@ import { motion, useInView } from 'framer-motion'
 import { Code2, Brain, Zap, Globe } from 'lucide-react'
 
 const stats = [
-  { label: 'Years Experience', value: '1', icon: Code2 },
+  { label: 'Months Experience', value: '6', icon: Code2 },
   { label: 'Projects Completed', value: '10+', icon: Zap },
-  { label: 'ML Models Deployed', value: '5+', icon: Brain },
+  { label: 'ML Datasets Deployed', value: '5+', icon: Brain },
   { label: 'Technologies', value: '15+', icon: Globe },
 ]
 
