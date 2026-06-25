@@ -78,7 +78,7 @@ const commands: Record<string, { text: string; color?: string }[][]> = {
     [{ text: '─────────────────────────────────', color: 'text-zinc-600' }],
     [],
     [{ text: 'Email       ', color: 'text-blue-400' }, { text: 'sanjaychilgani119@gmail.com' }],
-    [{ text: 'GitHub      ', color: 'text-blue-400' }, { text: 'https://github.com/8866792108' }],
+    [{ text: 'GitHub      ', color: 'text-blue-400' }, { text: 'https://github.com/sanjaykz237' }],
     [{ text: 'LinkedIn    ', color: 'text-blue-400' }, { text: 'https://www.linkedin.com/in/sanjay-madta-2187082b6/' }],
     [{ text: 'HuggingFace ', color: 'text-blue-400' }, { text: 'https://huggingface.co/sanjaykz' }],
     [],

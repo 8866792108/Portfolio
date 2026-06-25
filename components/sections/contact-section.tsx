@@ -20,7 +20,7 @@ const contactInfo = [
 ]
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/8866792108', label: 'GitHub' },
+  { icon: Github, href: 'https://github.com/sanjaykz237', label: 'GitHub' },
   { icon: Linkedin, href: 'https://www.linkedin.com/in/sanjay-madta-2187082b6', label: 'LinkedIn' },
 ]
 

@@ -6,7 +6,7 @@ import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react'
 const socialLinks = [
   {
     icon: Github,
-    href: 'https://github.com/8866792108',
+    href: 'https://github.com/sanjaykz237',
     label: 'GitHub',
     color: 'hover:text-white hover:border-white/30',
   },

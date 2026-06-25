@@ -42,7 +42,7 @@ const projects = [
     status: 'Live Project',
     category: 'Full Stack',
     link: 'https://volthub.netlify.app/',
-    github: 'https://github.com/8866792108/EVcharger',
+    github: 'https://github.com/sanjaykz237/EVcharger',
   },
   {
     id: 3,

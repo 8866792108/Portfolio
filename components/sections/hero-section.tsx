@@ -7,7 +7,7 @@ import { MagneticButton } from './magnetic-button'
 import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react'
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/8866792108', label: 'GitHub' },
+  { icon: Github, href: 'https://github.com/sanjaykz237', label: 'GitHub' },
   { icon: Linkedin, href: 'https://www.linkedin.com/in/sanjay-madta-2187082b6', label: 'LinkedIn' },
   { icon: Mail, href: 'mailto:sanjaychilgani119@gmail.com', label: 'Email' },
 ]

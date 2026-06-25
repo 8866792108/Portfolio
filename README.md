@@ -72,7 +72,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/8866792108/portfolio.git
+git clone https://github.com/sanjaykz237/portfolio.git
 cd portfolio
 
 # Install dependencies
@@ -111,7 +111,7 @@ pnpm start
 
 - **Email** — [sanjaychilgani119@gmail.com](mailto:sanjaychilgani119@gmail.com)
 - **LinkedIn** — [linkedin.com/in/sanjay-madta-2187082b6](https://www.linkedin.com/in/sanjay-madta-2187082b6)
-- **GitHub** — [github.com/8866792108](https://github.com/8866792108)
+- **GitHub** — [github.com/sanjaykz237](https://github.com/sanjaykz237)
 
 ---
 
