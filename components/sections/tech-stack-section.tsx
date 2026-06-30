@@ -4,14 +4,17 @@ import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const technologies = [
+  { name: 'HTML', category: 'Frontend', color: '#e34c26' },
+  { name: 'CSS', category: 'Frontend', color: '#264de4' },
+  { name: 'JavaScript', category: 'Language', color: '#f7df1e' },
   { name: 'Next.js', category: 'Frontend', color: '#fff' },
   { name: 'React', category: 'Frontend', color: '#61dafb' },
-  { name: 'TypeScript', category: 'Language', color: '#3178c6' },
   { name: 'Python', category: 'Language', color: '#3776ab' },
   { name: 'FastAPI', category: 'Backend', color: '#009688' },
   { name: 'Node.js', category: 'Backend', color: '#339933' },
   { name: 'LangChain', category: 'AI/ML', color: '#1c3c3c' },
   { name: 'LangGraph', category: 'AI/ML', color: '#f59e0b' },
+  { name: 'MCP', category: 'AI/ML', color: '#8b5cf6' },
   { name: 'Hugging Face', category: 'AI/ML', color: '#ffcc00' },
   { name: 'MongoDB', category: 'Database', color: '#47a248' },
   { name: 'PostgreSQL', category: 'Database', color: '#4169e1' },
