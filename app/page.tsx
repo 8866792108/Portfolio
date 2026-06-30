@@ -1,9 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { SmoothScrollProvider } from '@/components/providers/smooth-scroll-provider'
-import { LoadingScreen } from '@/components/effects/loading-screen'
 import { CustomCursor } from '@/components/effects/custom-cursor'
 import { ScrollProgress } from '@/components/effects/scroll-progress'
 import { Navigation } from '@/components/sections/navigation'
@@ -23,66 +21,38 @@ const Background3D = dynamic(
 )
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [showContent, setShowContent] = useState(false)
-
-  useEffect(() => {
-    // Prevent scroll during loading
-    if (isLoading) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'auto'
-    }
-    return () => {
-      document.body.style.overflow = 'auto'
-    }
-  }, [isLoading])
-
-  const handleLoadingComplete = () => {
-    setShowContent(true)
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 100)
-  }
-
   return (
     <div className="relative min-h-screen">
-      {/* Loading screen */}
-      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
+      <SmoothScrollProvider>
+        {/* Custom cursor */}
+        <CustomCursor />
 
-      {/* Main content */}
-      {showContent && (
-        <SmoothScrollProvider>
-          {/* Custom cursor */}
-          <CustomCursor />
+        {/* Scroll progress indicator */}
+        <ScrollProgress />
 
-          {/* Scroll progress indicator */}
-          <ScrollProgress />
+        {/* Noise overlay */}
+        <div className="noise-overlay" />
 
-          {/* Noise overlay */}
-          <div className="noise-overlay" />
+        {/* 3D Background */}
+        <Background3D />
 
-          {/* 3D Background */}
-          <Background3D />
+        {/* Navigation */}
+        <Navigation />
 
-          {/* Navigation */}
-          <Navigation />
+        {/* Main content */}
+        <main className="relative z-10">
+          <HeroSection />
+          <AboutSection />
+          <TechStackSection />
+          <ExperienceSection />
+          <ProjectsSection />
+          <TerminalSection />
+          <ContactSection />
+        </main>
 
-          {/* Main content */}
-          <main className="relative z-10">
-            <HeroSection />
-            <AboutSection />
-            <TechStackSection />
-            <ExperienceSection />
-            <ProjectsSection />
-            <TerminalSection />
-            <ContactSection />
-          </main>
-
-          {/* Footer */}
-          <Footer />
-        </SmoothScrollProvider>
-      )}
+        {/* Footer */}
+        <Footer />
+      </SmoothScrollProvider>
     </div>
   )
 }
